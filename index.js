@@ -72,8 +72,10 @@ fetch('places.json')
         void flipBoxInner.offsetHeight;
         infoBox.style.display = 'block';
         // infoBox.innerHTML = 'Information about ' + place.name;
+        flipBoxInner.style.backgroundImage = 'url("/static/' + place.icon + '")'
         currentActiveMarkerLatlng = e.latlng;
         updateInfoBoxPosition(currentActiveMarkerLatlng);
+        addCustomElement(currentActiveMarkerLatlng, place.characters);
 
         setTimeout(function() {
           flipBoxInner.classList.add('clicked');
@@ -89,7 +91,7 @@ fetch('places.json')
 var currentActiveMarkerLatlng = null;
 var flipBoxInner = document.querySelector('.flip-box-inner');
 
-map.on('zoomend', function() {
+map.on('moveend', function() {
   var currentLatLng = currentActiveMarkerLatlng;
   updateInfoBoxPosition(currentLatLng);
 });
@@ -104,6 +106,53 @@ function updateInfoBoxPosition(latlng) {
   console.log(infoBox.style.bottom)
 }
 
-// function 
+// Add character cluster
+var currentCircles = [];
+function addCustomElement(latlng, imageArray) {
+  clearCircle();
+  var offset = 0;
+
+  imageArray.forEach(function(imageUrl){
+    var element = document.createElement('div');
+    element.style.width = '50px';
+    element.style.height = '50px';
+    element.style.backgroundImage = 'url("/static/' + imageUrl + '")';
+    element.style.backgroundSize = 'cover';
+    element.style.borderRadius = '50%';
+    element.style.position = 'absolute';
+    element.className = 'character-circle';
+  
+    var point = map.latLngToLayerPoint(latlng);
+    element.style.left = point.x + offset + 'px';
+    element.style.top = point.y + 'px';
+    offset += 60;
+  
+    map.getPanes().overlayPane.appendChild(element);
+    currentCircles.push(element);
+  })
+}
 
 
+function updateCustomElements() {
+    var elements = document.querySelectorAll('.character-circle');
+    var latlng = currentActiveMarkerLatlng;
+    var point = map.latLngToLayerPoint(latlng);
+    var offset = 0;
+
+    elements.forEach(function(element) {
+        element.style.left = point.x + offset + 'px';
+        element.style.top = point.y + 'px';
+        offset += 60;
+    });
+}
+
+map.on('zoomend moveend', updateCustomElements);
+
+function clearCircle() {
+  currentCircles.forEach(function(element) {
+    if (element.parentNode) {
+      element.parentNode.removeChild(element);
+    }
+  });
+  currentCircles = [];
+}

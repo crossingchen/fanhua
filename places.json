@@ -2,66 +2,141 @@
     {
         "name": "外贸大楼",
         "latitude": 31.242274187655603,
-        "longitude": 121.48545652627948
+        "longitude": 121.48545652627948,
+        "characters": [
+            "ms_wang.jpg",
+            "jin_hua.jpg",
+            "mei_ping.jpg"
+        ],
+        "icon": ""
     },
     {
         "name": "和平饭店",
         "latitude": 31.2409509789467,
-        "longitude": 121.4846169948578
+        "longitude": 121.4846169948578,
+        "characters": [
+            "ya_so.jpg",
+            "a_bao.jpg"
+        ],
+        "icon": "he_ping_fan_dian.png"
+
     },
     {
         "name": "黄河路",
         "latitude": 31.236001968202018,
-        "longitude": 121.46656036376955
+        "longitude": 121.46656036376955,
+        "characters": [
+            "ming_ming.jpg",
+            "li_li.jpg",
+            "pan_jing_li.jpg",
+            "lu_mei_lin.jpg",
+            "jing_xiu.jpg"
+        ],
+        "icon": "zhi_zhen_garden.png"
+
     },
     {
         "name": "外白渡桥",
         "latitude": 31.245255352515386,
-        "longitude": 121.48572742938995
+        "longitude": 121.48572742938995,
+        "characters": [
+        ],
+        "icon": "bridge.png"
     },
     {
         "name": "小汪阿姐和小范楼上楼下",
         "latitude": 31.25827506016018,
-        "longitude": 121.47784173488618
+        "longitude": 121.47784173488618,
+        "characters": [
+            "ms_wang.jpg",
+            "fan_shi_fu.jpg"
+        ],
+        "icon": ""
+
     },
     {
         "name": "夜东京",
         "latitude": 31.223002126944948,
-        "longitude": 121.45285695791246
+        "longitude": 121.45285695791246,
+        "characters": [
+            "ling_zi.jpg",
+            "lin_hong.jpg",
+            "ge_lao_shi.jpg"
+        ],
+        "icon": "night_tokyo.png"
+
     },
     {
         "name": "沪联商厦",
         "latitude": 31.237125723700075,
-        "longitude": 121.47357165813447
+        "longitude": 121.47357165813447,
+        "characters": [
+            "fan_lao_ban.jpg"
+        ],
+        "icon": "hu_lian_shang_sha.png"
+
     },
     {
         "name": "服饰公司",
         "latitude": 31.237566048739872,
-        "longitude": 121.47309422492982
+        "longitude": 121.47309422492982,
+        "characters": [
+        ],
+        "icon": ""
+
     },
     {
         "name": "排骨年糕",
         "latitude": 31.23033711962481,
-        "longitude": 121.47544652223588
+        "longitude": 121.47544652223588,
+        "characters": [
+            "ms_wang.jpg",
+            "a_bao.jpg",
+            "ya_so.jpg"
+        ],
+        "icon": ""
+
     },
     {
         "name": "牯岭路",
         "latitude": 31.237827490761187,
-        "longitude": 121.46627873182298
+        "longitude": 121.46627873182298,
+        "characters": [
+            "tao_tao.jpg"
+        ],
+        "icon": ""
+
     },
     {
         "name": "新兰居",
         "latitude": 31.229763735456473,
-        "longitude": 121.475285589695
+        "longitude": 121.475285589695,
+        "characters": [
+            "a_bao.jpg",
+            "li_li.jpg"
+        ],
+        "icon": ""
+
     },
     {
         "name": "普希金雕像",
         "latitude": 31.2107758741766,
-        "longitude": 121.44718140363696
+        "longitude": 121.44718140363696,
+        "characters": [
+            "a_bao.jpg",
+            "li_li.jpg"
+        ],
+        "icon": "pushkin.png"
+
     },
     {
         "name": "乍浦路",
         "latitude": 31.24926143124143,
-        "longitude": 121.48303717374803
+        "longitude": 121.48303717374803,
+        "characters": [
+            "a_bao.jpg"
+        ],
+        "icon": ""
+
     }
 ]
