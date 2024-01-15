@@ -8,7 +8,8 @@
             "jin_hua.jpg",
             "mei_ping.jpg"
         ],
-        "icon": ""
+        "icon": "",
+        "description": "外滩中山东一路27号是剧中汪小姐和金花、梅萍的单位，也是阿宝初见汪小姐和小宁波的地方。"
     },
     {
         "name": "和平饭店",
@@ -18,7 +19,8 @@
             "ya_so.jpg",
             "a_bao.jpg"
         ],
-        "icon": "he_ping_fan_dian.png"
+        "icon": "he_ping_fan_dian.png",
+        "description": "南京东路20号和平饭店是阿宝和爷叔长包房的所在地。"
 
     },
     {
@@ -32,7 +34,8 @@
             "lu_mei_lin.jpg",
             "jing_xiu.jpg"
         ],
-        "icon": "zhi_zhen_garden.png"
+        "icon": "zhi_zhen_garden.png",
+        "description": "黄河路是剧中做生意的大舞台。"
 
     },
     {
@@ -41,7 +44,8 @@
         "longitude": 121.48572742938995,
         "characters": [
         ],
-        "icon": "bridge.png"
+        "icon": "bridge.png",
+        "description": "小宁波跳“黄浦江” 的地点。宝总也在此收获剧中唯一一次“开司”。"
     },
     {
         "name": "小汪阿姐和小范楼上楼下",
@@ -51,7 +55,8 @@
             "ms_wang.jpg",
             "fan_shi_fu.jpg"
         ],
-        "icon": ""
+        "icon": "",
+        "description": "申花球员范志毅的旧地址。"
 
     },
     {
@@ -63,7 +68,8 @@
             "lin_hong.jpg",
             "ge_lao_shi.jpg"
         ],
-        "icon": "night_tokyo.png"
+        "icon": "night_tokyo.png",
+        "description": "玲子和阿宝的大本营。宝总泡饭的发祥地。"
 
     },
     {
@@ -73,7 +79,8 @@
         "characters": [
             "fan_lao_ban.jpg"
         ],
-        "icon": "hu_lian_shang_sha.png"
+        "icon": "hu_lian_shang_sha.png",
+        "description": "三羊牌初登上海滩，费翔烧火的地方。现实中应该是指上海的华联商厦，2005年启用旧称永安百货公司。"
 
     },
     {
@@ -82,7 +89,8 @@
         "longitude": 121.47309422492982,
         "characters": [
         ],
-        "icon": ""
+        "icon": "",
+        "description": "剧中的服饰公司原型应该是华联商厦对面的上海时装公司。这幢楼为上海先施公司大楼，建于1915-1917年。"
 
     },
     {
@@ -94,7 +102,8 @@
             "a_bao.jpg",
             "ya_so.jpg"
         ],
-        "icon": ""
+        "icon": "",
+        "description": "剧中排骨年糕小基地的原型应为位于云南南路的鲜得来排骨年糕店。前身是创始于1921年、位于西藏南路177弄口的鲜得来排骨年糕店，有“排骨年糕大王”的称号。"
 
     },
     {
@@ -104,7 +113,8 @@
         "characters": [
             "tao_tao.jpg"
         ],
-        "icon": ""
+        "icon": "",
+        "description": "牯岭路是陶陶做生意的一条全长400米左右的小路，离黄河路不远，方便出货。现在已经看不到剧中的街景了。"
 
     },
     {
@@ -115,7 +125,8 @@
             "a_bao.jpg",
             "li_li.jpg"
         ],
-        "icon": ""
+        "icon": "",
+        "description": "剧中新兰居据说原型为位于宁海东路的新梅居，特色为热气羊肉火锅。李李和宝总除黄河路外的固定碰头地。原来宝总和汪小姐、李李碰头的地方离那么近。"
 
     },
     {
@@ -126,7 +137,8 @@
             "a_bao.jpg",
             "li_li.jpg"
         ],
-        "icon": "pushkin.png"
+        "icon": "pushkin.png",
+        "description": "剧中引发无数网友遐想的宝总抽“事后烟”的地方。"
 
     },
     {
@@ -136,7 +148,9 @@
         "characters": [
             "a_bao.jpg"
         ],
-        "icon": ""
+        "icon": "",
+        "description": "宝总舰队的基地。"
+
 
     }
 ]

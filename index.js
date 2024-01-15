@@ -62,24 +62,26 @@ fetch('places.json')
   .then(response => response.json())
   .then(data => {
     data.forEach(place => {
-      var marker = L.marker([place.latitude, place.longitude]).addTo(map)
-                    .bindPopup(place.name);
+      var marker = L.marker([place.latitude, place.longitude]).addTo(map);
 
       marker.on('click', function(e) {
 
         console.log("Clicked marker for " + place.name);
-        flipBoxInner.classList.remove('clicked');
-        void flipBoxInner.offsetHeight;
         infoBox.style.display = 'block';
-        // infoBox.innerHTML = 'Information about ' + place.name;
+        flipBoxInner.classList.remove('clicked');
         flipBoxInner.style.backgroundImage = 'url("/static/' + place.icon + '")'
+
         currentActiveMarkerLatlng = e.latlng;
         updateInfoBoxPosition(currentActiveMarkerLatlng);
-        addCustomElement(currentActiveMarkerLatlng, place.characters);
+        addCharacters(currentActiveMarkerLatlng, place.characters);
+        addDescription(currentActiveMarkerLatlng, place);
 
         setTimeout(function() {
           flipBoxInner.classList.add('clicked');
         }, 100)
+
+        disableMapInteraction();
+
       });
     });
   })
@@ -90,32 +92,35 @@ fetch('places.json')
 // pop up effect
 var currentActiveMarkerLatlng = null;
 var flipBoxInner = document.querySelector('.flip-box-inner');
+var infoBox = document.getElementById('infoBox');
+
 
 map.on('moveend', function() {
   var currentLatLng = currentActiveMarkerLatlng;
   updateInfoBoxPosition(currentLatLng);
+  updateCustomElements()
 });
 
-var infoBox = document.getElementById('infoBox');
 function updateInfoBoxPosition(latlng) {
   var point = map.latLngToContainerPoint(latlng);
   var infoBoxHeight = infoBox.offsetHeight;
 
-  infoBox.style.left = point.x + 50 + 'px';
+  infoBox.style.left = point.x + 'px';
   infoBox.style.top = point.y - 25 - infoBoxHeight + 'px';
+  infoBox.style.zIndex = 1000;
   console.log(infoBox.style.bottom)
 }
 
-// Add character cluster
+// Add character cluster and description
 var currentCircles = [];
-function addCustomElement(latlng, imageArray) {
-  clearCircle();
-  var offset = 0;
+function addCharacters(latlng, imageArray) {
+  // clearCircle();
+  var offset = 80;
 
   imageArray.forEach(function(imageUrl){
     var element = document.createElement('div');
-    element.style.width = '50px';
-    element.style.height = '50px';
+    element.style.width = '70px';
+    element.style.height = '70px';
     element.style.backgroundImage = 'url("/static/' + imageUrl + '")';
     element.style.backgroundSize = 'cover';
     element.style.borderRadius = '50%';
@@ -125,7 +130,7 @@ function addCustomElement(latlng, imageArray) {
     var point = map.latLngToLayerPoint(latlng);
     element.style.left = point.x + offset + 'px';
     element.style.top = point.y + 'px';
-    offset += 60;
+    offset += 80;
   
     map.getPanes().overlayPane.appendChild(element);
     currentCircles.push(element);
@@ -137,16 +142,14 @@ function updateCustomElements() {
     var elements = document.querySelectorAll('.character-circle');
     var latlng = currentActiveMarkerLatlng;
     var point = map.latLngToLayerPoint(latlng);
-    var offset = 0;
+    var offset = 80;
 
     elements.forEach(function(element) {
         element.style.left = point.x + offset + 'px';
         element.style.top = point.y + 'px';
-        offset += 60;
+        offset += 80;
     });
 }
-
-map.on('zoomend moveend', updateCustomElements);
 
 function clearCircle() {
   currentCircles.forEach(function(element) {
@@ -155,4 +158,75 @@ function clearCircle() {
     }
   });
   currentCircles = [];
+}
+
+function addDescription(latlng, place) {
+  var textBoxTitle = document.getElementById('textBoxTitle')
+  textBoxTitle.textContent = place.name;
+  textBoxTitle.style.width = '300px';
+  textBoxTitle.style.position = 'absolute';
+  textBoxTitle.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+  textBoxTitle.style.fontSize = '20px';
+  textBoxTitle.style.padding = '10px';
+  textBoxTitle.zIndex = 1000;
+  textBoxTitle.style.display = 'block';
+
+  var textBox = document.getElementById('textBox');
+  textBox.textContent = place.description;
+  textBox.style.width = '300px';
+  textBox.style.position = 'absolute';
+  textBox.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+  textBox.style.fontSize = '16px';
+  textBox.style.padding = '10px';
+  textBox.zIndex = 1000;
+  textBox.style.display = 'block';
+
+  var closeButton = document.createElement('button');
+  closeButton.innerText = 'X';
+  closeButton.onclick = function(e) {
+    e.stopPropagation()
+
+    textBoxTitle.style.display = 'none';
+    textBox.style.display = 'none';
+
+    flipBoxInner.style.backgroundImage = ''
+    clearCircle();
+
+    enableMapInteraction();
+    infoBox.style.zIndex = 0;
+
+  }
+  closeButton.style.position = 'absolute';
+  closeButton.style.top = '5px';
+  closeButton.style.right = '5px';
+
+  textBoxTitle.appendChild(closeButton);
+
+  var point = map.latLngToLayerPoint(latlng);
+  textBoxTitle.style.left = point.x + 80 + 'px';
+  textBoxTitle.style.top = point.y + 80 + 'px';
+  map.getPanes().popupPane.appendChild(textBoxTitle);
+  textBox.style.left = point.x + 80 + 'px';
+  textBox.style.top = point.y + 130 + 'px';
+  map.getPanes().popupPane.appendChild(textBox);
+};
+
+function disableMapInteraction() {
+  map.dragging.disable();
+  map.touchZoom.disable();
+  map.doubleClickZoom.disable();
+  map.scrollWheelZoom.disable();
+  map.boxZoom.disable();
+  map.keyboard.disable();
+  if (map.tap) map.tap.disable();
+};
+
+function enableMapInteraction() {
+  map.dragging.enable();
+  map.touchZoom.enable();
+  map.doubleClickZoom.enable();
+  map.scrollWheelZoom.enable();
+  map.boxZoom.enable();
+  map.keyboard.enable();
+  if (map.tap) map.tap.enable();
 }
